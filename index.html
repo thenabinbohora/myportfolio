@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nabin Bohora</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./index.js"></script>
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("4VE8jnQgLrxzpjEpf");
+        })();
+    </script>
 </head>
 
 <body>
@@ -78,8 +87,12 @@
         </a>
         <div class="modal">
             <div class="modal__half modal__about">
-                <h3 class="modal__title modal__title--about">Here's a bit about me.</h3>
-                <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
+                <h3 class="modal__title modal__title--about">
+                    Here's a bit about me.
+                </h3>
+                <h4 class="modal__sub-title modal__sub-title--about">
+                    Frontend Software Engineer
+                </h4>
                 <p class="modal__para">
                     Lorem ipsum, dolor sit amet <strong class="text-color">consectetur</strong> adipisicing elit. Eius <strong class="text-color">tenetur adipisci</strong> ex ipsam, temporibus quas maxime sapiente <strong class="text-color">accusamus!</strong> 
                     <br>
@@ -105,7 +118,41 @@
 
                 </div>
             </div>
-            <div class="modal__half modal__contact">Let's have a chat!</div>
+            <div class="modal__half modal__contact">
+                <h3 class="modal__title modal__title--contact">
+                    Let's have a chat!
+                </h3>
+                <h4 class="modal__sub-title modal__sub-title--contact">
+                    I am open to new opportunities.
+                </h4>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label">Name</label>
+                        <input class="input" name="user_name" type="text" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Email</label>
+                        <input class="input" name="user_email" type="email" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Message</label>
+                        <textarea class="input" name="message" type="text" required></textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">
+                        Send
+                    </button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    <img src="./assets/sent.svg" class="success__img" alt="sent icon">
+                    <p class="success__text">
+                        Thanks for the message! Looking forward to speak with you soon.
+                    </p>
+                </div>
+            </div>
+            <i class="fas fa-times modal__exit click"></i>
         </div>
     </section>
     <section id="projects">
