@@ -13,6 +13,7 @@ html {
 
 section {
     background-color: rgb(245, 245, 245);
+    transition: all 300ms ease;
 }
 
 li {
@@ -121,6 +122,54 @@ input:focus, textarea:focus {
     left: 0;
 }
 
+nav,
+.scroll,
+.header {
+    opacity: 1;
+    visibility: visible;
+    transition: all 600ms 400ms;
+}
+
+.modal--open nav,
+.modal--open .scroll,
+.modal--open .header {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 400ms;
+}
+
+.dark-theme .title,
+.dark-theme .section__title,
+.dark-theme .section__sub-title,
+.dark-theme .nav__link--anchor,
+.dark-theme .fa-adjust,
+.dark-theme .header__para {
+    color: #fff;
+}
+
+.dark-theme section {
+    background-color: #242424;
+}
+
+.dark-theme #personal-logo {
+    filter: none;
+}
+
+.dark-theme .scroll__icon {
+    border-color: #fff;
+}
+
+.dark-theme .scroll__icon:after,
+.dark-theme .link__hover-effect--black:after {
+    background-color: #fff;
+}
+
+.dark-theme .mail__btn {
+    background-color: #fff;
+    color: #242424;
+}
+
+
 /* Landing Page */
 
 #landing-page {
@@ -176,13 +225,14 @@ input:focus, textarea:focus {
     border: none;
     background-color: #242424;
     color: #fff;
-    position: absolute;
+    position: fixed;
     bottom: 32px;
     right: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 55;
+    box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.32);
 }
 
 .scroll {
@@ -272,7 +322,7 @@ nav {
     display: flex;
     visibility: hidden;
     z-index: -1;
-    transition: visibility 1s z-index 1s box-shadow 0.5s;
+    transition: visibility 1s, z-index 1s, box-shadow 0.5s ease;
 }
 
 .modal--open .modal {
@@ -288,10 +338,17 @@ nav {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    transition: all 300ms ease-in;
+}
+
+.modal--open .modal__about,
+.modal--open .modal__contact {
+    transform: translateX(0%);
 }
 
 .modal__about {
     background-color: rgb(245, 245, 245);
+    transform: translateX(-110%);
 }
 
 .modal__languages{
@@ -333,6 +390,7 @@ nav {
 .modal__contact {
     background-color: #242424;
     color: #fff;
+    transform: translateX(110%);
 }
 
 .modal__title {
@@ -382,7 +440,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: -1;
@@ -410,7 +468,6 @@ nav {
 
 .modal__overlay--success {
     background-color: #4bb543;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -418,6 +475,7 @@ nav {
 
 .modal__overlay--visible {
     z-index: 2;
+    display: flex;
 }
 
 .success__text{
@@ -516,6 +574,7 @@ nav {
 footer {
     background-color: #242424;
     padding: 6% 0;
+    position: relative;
 }
 
 .footer__row {
@@ -567,3 +626,113 @@ footer {
 .footer__copyright {
     color: #fff;
 }
+
+
+/* Shapes */
+
+.shape {
+    position: fixed;
+}
+
+.shape--0 {
+    top: 15vh;
+    left: 5vw;
+}
+.shape--1 {
+    top: 15vh;
+    left: 50vw;
+}
+.shape--2 {
+    top: 15vh;
+    left: 85vw;
+}
+.shape--3 {
+    top: 50vh;
+    left: 5vw;
+}
+.shape--4 {
+    top: 50vh;
+    left: 50vw;
+}
+.shape--5 {
+    top: 50vh;
+    left: 85vw;
+}
+.shape--6 {
+    top: 80vh;
+    left: 5vw;
+}
+.shape--7 {
+    top: 80vh;
+    left: 50vw;
+}
+.shape--8 {
+    top: 80vh;
+    left: 85vw;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+     .title {
+        font-size: 76px;
+     }
+
+     .header__para {
+        font-size: 18px;
+     }
+
+     .modal {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        width: 80%;
+        flex-direction: column-reverse;
+        margin: 24px auto;
+     }
+
+     .modal__half {
+        width: 100%;
+     }
+
+     .modal__title {
+        font-size: 24px;
+     }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 52px;
+     }
+
+     .header__para {
+        font-size: 16px;
+     }
+
+     .nav__link:first-child {
+        display: none;
+     }
+
+     .project__description--para {
+        display: none;
+     }
+
+     .project__description {
+        left: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+     }
+
+     .project__description--sub-title {
+        margin-bottom: 8px;
+     }
+
+     .modal__half {
+        padding: 40px;
+     };
+}
+
+     
